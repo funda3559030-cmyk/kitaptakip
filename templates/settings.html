@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h3 mb-4">Ayarlar</h1>
+<div class="card settings-card">
+  <div class="card-body">
+    <form method="post" class="row g-3 align-items-end">
+      <div class="col-md-4"><label class="form-label">Yıllık kitap hedefi</label><input class="form-control" type="number" min="1" name="yearly_goal" value="{{ yearly_goal }}" required></div>
+      <div class="col-md-2"><button class="btn btn-primary">Kaydet</button></div>
+    </form>
+  </div>
+</div>
+{% endblock %}

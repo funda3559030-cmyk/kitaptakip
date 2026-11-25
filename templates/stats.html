@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h3 mb-4">İstatistikler</h1>
+<div class="row g-3 mb-4">
+  <div class="col-md-4"><div class="card stat-card"><div class="card-body"><small>Yıllık hedef</small><h2 class="h4">{{ count }} / {{ goal }}</h2><p class="mb-0">{{ goal_status }}</p></div></div></div>
+  <div class="col-md-4"><div class="card stat-card"><div class="card-body"><small>Bu yıl okunan</small><h2 class="h4">{{ finished }} kitap</h2></div></div></div>
+  <div class="col-md-4"><div class="card stat-card"><div class="card-body"><small>Okuma serisi</small><h2 class="h4">{{ streak }} gün</h2></div></div></div>
+</div>
+<div class="card"><div class="card-body"><h2 class="h5">Aylık Okunan Sayfa</h2><canvas id="monthlyChart"></canvas></div></div>
+<script>
+new Chart(document.getElementById('monthlyChart'), {
+  type: 'bar',
+  data: {labels: {{ labels|tojson }}, datasets: [{label: 'Sayfa', data: {{ pages|tojson }}, backgroundColor: '#EC691F'}]},
+  options: {responsive: true, scales: {y: {beginAtZero: true}}}
+});
+</script>
+{% endblock %}
